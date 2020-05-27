@@ -1,0 +1,218 @@
+{
+  "id": "7d284830-6122-4ae5-86cd-1d9433a6299e",
+  "version": "2.0",
+  "name": "deepracer-auto-submit",
+  "url": "https://console.aws.amazon.com/deepracer/home?region=us-east-1#races/arn%3Aaws%3Adeepracer%3A%3A385531386361%3Aleaderboard%2FDBS-DeepRacer-League-Training-002",
+  "tests": [{
+    "id": "41c699b2-2a89-40c6-acd2-654572bf8657",
+    "name": "auto-submit-with-loop",
+    "commands": [{
+      "id": "767817a5-0c19-4481-b057-2497f0f277e5",
+      "comment": "ENTER MODEL NAME HERE",
+      "command": "store",
+      "target": "turning-direction-ver-2-clone-4-clone-2-progress-step",
+      "targets": [],
+      "value": "model_name"
+    }, {
+      "id": "c468cea4-b161-4dd6-a458-3a88b523a210",
+      "comment": "ENTER COMPETITION URL HERE",
+      "command": "store",
+      "target": "https://console.aws.amazon.com/deepracer/home?region=us-east-1#races/arn%3Aaws%3Adeepracer%3A%3A385531386361%3Aleaderboard%2FDBS-DeepRacer-League-Training-002",
+      "targets": [],
+      "value": "competition_url"
+    }, {
+      "id": "f96ae56d-80ac-48bb-9f5e-cb432e913da4",
+      "comment": "",
+      "command": "while",
+      "target": "true",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "800ed62c-0d04-487b-bc6a-084fc1d85505",
+      "comment": "Open competition page",
+      "command": "open",
+      "target": "${competition_url}",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "029f92ea-5b81-4c2b-89c7-36570f54b272",
+      "comment": "Wait for 10 seconds before first check",
+      "command": "pause",
+      "target": "10000",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2139f3a3-a203-4e65-8437-8c86651bf7b0",
+      "comment": "Check if \"Race again\" button exists",
+      "command": "storeXpathCount",
+      "target": "xpath=//body/div/div[2]/div/div/div/awsui-app-layout/div/main/div[2]/div/span/main/div[2]/div/div[2]/awsui-column-layout/div/span/div/div/div/div/div[2]/div/div/awsui-button/button[@class=\"awsui-button awsui-button-variant-primary awsui-hover-child-icons\"]",
+      "targets": [],
+      "value": "submitButtonExists"
+    }, {
+      "id": "b9c15dfe-51d2-4b21-b00d-9958406e49ca",
+      "comment": "",
+      "command": "echo",
+      "target": "\"Race again\" button count: ${submitButtonExists}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "37b1cc0e-11df-46f0-87bd-a0c2f707ab72",
+      "comment": "",
+      "command": "if",
+      "target": "${submitButtonExists} > 0",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4ec98b9d-b464-46a9-a0d4-5b4e78894b87",
+      "comment": "Click \"Race again\"",
+      "command": "click",
+      "target": "css=awsui-button:nth-child(1) > .awsui-button-variant-primary > span",
+      "targets": [
+        ["css=awsui-button:nth-child(1) > .awsui-button-variant-primary > span", "css:finder"],
+        ["xpath=//div[@id='app']/div/awsui-app-layout/div/main/div[2]/div/span/main/div[2]/div/div[2]/awsui-column-layout/div/span/div/div/div/div/div[2]/div/div/awsui-button/button/span", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/awsui-button/button/span", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "829ec759-a253-46f0-94df-0116a5fbdfbe",
+      "comment": "Click dropdown",
+      "command": "click",
+      "target": "id=awsui-select-0",
+      "targets": [
+        ["id=awsui-select-0", "id"],
+        ["css=#awsui-select-0", "css:finder"],
+        ["xpath=//div[@id='awsui-select-0']", "xpath:attributes"],
+        ["xpath=//awsui-form[@id='PLCHLDR_submit_model']/div/div[2]/span/span/awsui-form-section/div/div[2]/span/awsui-column-layout/div/span/div/div[2]/awsui-form-field/div/div[2]/div/div/span/awsui-select/div/div/awsui-select-trigger/div", "xpath:idRelative"],
+        ["xpath=//awsui-select-trigger/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "08d271e4-d4e2-4bf5-9f94-3eb3fd302b23",
+      "comment": "Click at option",
+      "command": "click",
+      "target": "//span[text()='${model_name}']",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "103dfe76-cebe-42d4-9503-eb9f6d6fb3e2",
+      "comment": "Click submit button",
+      "command": "click",
+      "target": "css=.awsui-button-variant-primary",
+      "targets": [
+        ["css=.awsui-button-variant-primary", "css:finder"],
+        ["xpath=(//button[@type='submit'])[2]", "xpath:attributes"],
+        ["xpath=//awsui-form[@id='PLCHLDR_submit_model']/div/div[4]/span/div/span/awsui-button/button", "xpath:idRelative"],
+        ["xpath=//div/span/awsui-button/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Submit model')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "20103c81-e3be-4a15-ba7a-f6aeaadcad77",
+      "comment": "Wait for 10 minutes after submission",
+      "command": "pause",
+      "target": "600000",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "55456abb-461f-4ef2-81dd-e00a4c4728b5",
+      "comment": "",
+      "command": "end",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7bf110a0-69e0-49e0-a635-bd89dc1d9611",
+      "comment": "",
+      "command": "end",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "5b6382dd-caec-4bcc-893d-6cd86073ae8b",
+    "name": "auto-submit-once",
+    "commands": [{
+      "id": "60137de5-bfef-4948-803a-bccbaba66232",
+      "comment": "ENTER MODEL NAME HERE",
+      "command": "store",
+      "target": "turning-direction-ver-2-clone-4-clone-2-progress-step",
+      "targets": [],
+      "value": "model_name"
+    }, {
+      "id": "ea94df4b-c3a6-47f4-af56-8aa362bc5e55",
+      "comment": "ENTER COMPETITION URL HERE",
+      "command": "store",
+      "target": "https://console.aws.amazon.com/deepracer/home?region=us-east-1#races/arn%3Aaws%3Adeepracer%3A%3A385531386361%3Aleaderboard%2FDBS-DeepRacer-League-Training-002",
+      "targets": [],
+      "value": "competition_url"
+    }, {
+      "id": "295adfd1-9d8c-4a1f-aa03-41414dd44477",
+      "comment": "Open competition page",
+      "command": "open",
+      "target": "${competition_url}",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "441a8f3e-1ee7-4809-a53e-99fb8bbd8fca",
+      "comment": "Wait for \"Race again\" button",
+      "command": "waitForElementPresent",
+      "target": "css=awsui-button:nth-child(1) > .awsui-button-variant-primary > span",
+      "targets": [],
+      "value": "300000"
+    }, {
+      "id": "4130af82-9ba3-4bbc-bcbc-9c89e41a4747",
+      "comment": "Click \"Race again\"",
+      "command": "click",
+      "target": "css=awsui-button:nth-child(1) > .awsui-button-variant-primary > span",
+      "targets": [
+        ["css=awsui-button:nth-child(1) > .awsui-button-variant-primary > span", "css:finder"],
+        ["xpath=//div[@id='app']/div/awsui-app-layout/div/main/div[2]/div/span/main/div[2]/div/div[2]/awsui-column-layout/div/span/div/div/div/div/div[2]/div/div/awsui-button/button/span", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/awsui-button/button/span", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2b32e2bb-75ba-457b-acda-789032191f8c",
+      "comment": "Click dropdown",
+      "command": "click",
+      "target": "id=awsui-select-0",
+      "targets": [
+        ["id=awsui-select-0", "id"],
+        ["css=#awsui-select-0", "css:finder"],
+        ["xpath=//div[@id='awsui-select-0']", "xpath:attributes"],
+        ["xpath=//awsui-form[@id='PLCHLDR_submit_model']/div/div[2]/span/span/awsui-form-section/div/div[2]/span/awsui-column-layout/div/span/div/div[2]/awsui-form-field/div/div[2]/div/div/span/awsui-select/div/div/awsui-select-trigger/div", "xpath:idRelative"],
+        ["xpath=//awsui-select-trigger/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8f091098-5b54-4a4d-8976-0860e95633bf",
+      "comment": "Click at option",
+      "command": "click",
+      "target": "//span[text()='${model_name}']",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0a0acb8c-f301-4e14-9625-d553a3141d5e",
+      "comment": "Click submit button",
+      "command": "click",
+      "target": "css=.awsui-button-variant-primary",
+      "targets": [
+        ["css=.awsui-button-variant-primary", "css:finder"],
+        ["xpath=(//button[@type='submit'])[2]", "xpath:attributes"],
+        ["xpath=//awsui-form[@id='PLCHLDR_submit_model']/div/div[4]/span/div/span/awsui-button/button", "xpath:idRelative"],
+        ["xpath=//div/span/awsui-button/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Submit model')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "30babd85-a87d-460b-ac2f-2acfd6f57908",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["https://console.aws.amazon.com/deepracer/home?region=us-east-1#races/arn%3Aaws%3Adeepracer%3A%3A385531386361%3Aleaderboard%2FDBS-DeepRacer-League-Training-002"],
+  "plugins": []
+}
