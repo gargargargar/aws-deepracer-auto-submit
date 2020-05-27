@@ -8,7 +8,7 @@ Required softwares:
 
 ## Brief Instructions
 1. Download and install Selenium IDE (through Chrome or Firefox)
-2. Download the file `deepracer-auto-submit`
+2. Download the file `deepracer-auto-submit` from this repository
 3. Make sure you're logged into AWS Deepracer!
 4. Open Selenium IDE (through your browser), and open the file `deepracer-auto-submit` which you've downloaded.
 5. Depending on your needs, you can
