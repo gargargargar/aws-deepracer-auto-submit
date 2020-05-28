@@ -4,11 +4,11 @@ This is an auto submission script written for AWS Deepracer with Selenium IDE
 Required softwares:
 - Selenium IDE (available on Chrome or Firefox)
 
-## Main file: `deepracer-auto-submit`
+## Main file: `deepracer-auto-submit.side`
 
 ## Brief Instructions
 1. Download and install [Selenium IDE](https://www.selenium.dev/selenium-ide/). (You need to have Google Chrome or Firefox installed.)
-2. Download the file `deepracer-auto-submit` from this repository
+2. Download the file `deepracer-auto-submit.side` from this repository
 3. Make sure you're logged into AWS Deepracer!
 4. Open Selenium IDE (through your browser), and open the file `deepracer-auto-submit` which you've downloaded.
 5. Depending on your needs, you can
